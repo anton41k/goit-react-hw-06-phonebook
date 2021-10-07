@@ -24,12 +24,12 @@ function Form({ onSubmit, resFilter }) {
     onSubmit({ name, number });
 
     reset();
-    resFilter();
   };
 
   const reset = () => {
     setName("");
     setNumber("");
+    resFilter();
   };
 
   return (
@@ -73,7 +73,7 @@ function Form({ onSubmit, resFilter }) {
 const mapDispatchToProps = (dispatch) => ({
   onSubmit: ({ name, number }) =>
     dispatch(contactsActions.addContact({ name, number })),
-  resFilter: () => dispatch(contactsActions.resFilter()),
+  resFilter: () => dispatch(contactsActions.resFilter("")),
 });
 
 export default connect(null, mapDispatchToProps)(Form);
